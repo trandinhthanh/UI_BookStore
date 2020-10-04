@@ -11,7 +11,7 @@ $(document).ready(function() {
 
             $.each(data, function(key, item) {
                 $('#danh_muc_san_pham').append(
-                    `<li><a href="">${item.tenDanhMuc}</a></li>`
+                    `<li><a href='./${item.linkDanhMuc}'>${item.tenDanhMuc}</a></li>`
                 );
             });
 
