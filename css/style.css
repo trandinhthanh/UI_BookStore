@@ -111,6 +111,13 @@ ol {
     margin: 0;
 }
 
+.noi__bat h2 {
+    text-align: center;
+    color: #1c1c1c;
+    font-weight: 700;
+    padding-bottom: 30px;
+}
+
 
 /*---------------------
   Helper CSS
@@ -709,6 +716,10 @@ ol {
 .categories__item {
     height: 270px;
     position: relative;
+}
+
+.categories {
+    padding-bottom: 50px;
 }
 
 .categories__item h5 {
@@ -1675,8 +1686,60 @@ ol {
 .product__details__text .product__details__price {
     font-size: 30px;
     color: #dd2222;
-    font-weight: 600;
     margin-bottom: 15px;
+    display: flex;
+}
+
+.product__details__text .product__details__price #gia__ban {
+    width: 100px;
+    height: 50px;
+    /* border: 1px solid red; */
+}
+
+.product__details__text .product__details__price #gia__ban p {
+    font-size: 28px;
+    color: red;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.product__details__text .product__details__price #gia__goc {
+    width: 70px;
+    height: 30px;
+    /* border: 1px solid blue; */
+    /* margin-left: 20px; */
+    margin-top: 21px;
+}
+
+.product__details__text .product__details__price #gia__goc p {
+    text-decoration: line-through;
+}
+
+.product__details__text .product__details__price #phan__tram {
+    width: 50px;
+    height: 30px;
+    /* border: 1px solid green; */
+    /* margin-left: 20px; */
+    margin-top: 19px;
+    border-radius: 10px;
+    background-color: #6AB963;
+}
+
+.product__details__text .product__details__price #phan__tram p {
+    text-align: center;
+    color: red;
+    font-weight: 500;
+}
+
+#luot__xem p {
+    color: #6f6f6f;
+    margin-bottom: 0;
+}
+
+#luot__like p {
+    color: #6f6f6f;
+    margin-bottom: 0;
+    display: inline;
 }
 
 .product__details__text p {
@@ -1700,7 +1763,7 @@ ol {
 .product__details__text ul {
     border-top: 1px solid #ebebeb;
     padding-top: 40px;
-    margin-top: 50px;
+    margin-top: 16px;
 }
 
 .product__details__text ul li {

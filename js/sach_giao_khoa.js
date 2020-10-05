@@ -11,7 +11,7 @@
         success: function(data) {
             $('#tongSoSP').text(data.length);
             $.each(data, function(key, item) {
-                const trangThai = "Còn Hàng";
+                var trangThai = "Còn Hàng";
                 if (item.soLuong == 0) {
                     trangThai = "Hết Hàng";
                 }

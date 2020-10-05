@@ -140,7 +140,7 @@
             },
 
             992: {
-                items: 3,
+                items: 4,
             }
         }
     });
@@ -155,7 +155,7 @@
         dots: true,
         smartSpeed: 1200,
         autoHeight: false,
-        autoplay: true
+        autoplay: false,
     });
 
     /*-----------------------
