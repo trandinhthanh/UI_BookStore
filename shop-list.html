@@ -189,13 +189,13 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">
+                            <form id="prospects_form" action="#">
                                 <!-- <div class="hero__search__categories">
                                     All Categories
                                     <span class="arrow_carrot-down"></span>
                                 </div> -->
-                                <input type="text" placeholder="Nhập thông tin cần tìm...">
-                                <button type="submit" class="site-btn">Tìm Kiếm</button>
+                                <input type="text" id="valueSearch" placeholder="Nhập thông tin cần tìm...">
+                                <button class="site-btn" id="btnSearch">Tìm Kiếm</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
@@ -369,32 +369,9 @@
                         </div>
                     </div>
                     <div class="row" id="listBook">
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/discount/pd-7.jpg">
-                                    <div class="product__discount__percent">-50%</div>
-                                    <!-- <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul> -->
-                                </div>
-                                <div class="product__discount__item__text">
-                                    <span>Truyện Tranh</span>
-                                    <h5><a href="#">Dấu chân trên cát</a></h5>
-                                    <div class="product__item__price">75.000 <span>90.000</span></div>
-                                </div>
-                                <div class="tinh__trang__product">
-                                    <h6>${trangThai}</h6>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <div class="product__pagination">
-                        <a href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                    <div class="product__pagination" id="page">
+                        <!-- <a href="#" id="nextPage"><i class="fa fa-long-arrow-right"></i></a> -->
                     </div>
                 </div>
             </div>
@@ -556,8 +533,10 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <script src="js/sach_giao_khoa.js"></script>
     <script src="js/index_danh_muc_san_pham.js"></script>
+    <script src="js/get_list_product.js"></script>
+    <script src="js/routing.js"></script>
+    <script src="js/event_search.js"></script>
     <script src="js/main.js"></script>
 
 

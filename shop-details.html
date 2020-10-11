@@ -200,39 +200,35 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
-                            <img class="product__details__pic__item--large" src="img/product/discount/pd-10-2.jpg" alt="">
+                            <img class="product__details__pic__item--large" alt="" id="hinhChinh">
                         </div>
-                        <div class="product__details__pic__slider owl-carousel">
-                            <img data-imgbigurl="img/product/discount/pd-10-1.jpg" src="img/product/discount/pd-10-1.jpg" alt="">
-                            <img data-imgbigurl="img/product/discount/pd-10-2.jpg" src="img/product/discount/pd-10-2.jpg" alt="">
-                            <img data-imgbigurl="img/product/discount/pd-10-1.jpg" src="img/product/discount/pd-10-1.jpg" alt="">
-                            <img data-imgbigurl="img/product/discount/pd-10-2.jpg" src="img/product/discount/pd-10-2.jpg" alt="">
+                        <div class="product__details__pic__slider owl-carousel" id="listImg">
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
-                        <h3>Tên Sản Phẩm</h3>
+                        <h3 id="tenSanPham"></h3>
                         <div class="product__details__rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star-half-o"></i>
-                            <span>(18 reviews)</span>
+                            <span id="reviews">(18 reviews)</span>
                         </div>
                         <div class="product__details__price">
                             <div id="gia__ban">
-                                <p>80.000</p>
+                                <p id="giamGia"></p>
                             </div>
                             <div id="gia__goc">
-                                <p>90000</p>
+                                <p id="giaGoc"></p>
                             </div>
                             <div id="phan__tram">
-                                <p>-30%</p>
+                                <p id="phanTramGiam"></p>
                             </div>
                         </div>
-                        <p>Tất cả những trải nghiệm trong chuyến phiêu du theo đuổi vận mệnh của mình đã giúp Santiago thấu hiểu được ý nghĩa sâu xa nhất của hạnh phúc, hòa hợp với vũ trụ và con người.</p>
+                        <p id="moTa"></p>
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">
@@ -243,16 +239,16 @@
                         <a href="#" class="primary-btn">Thêm Vào Giỏ Hàng</a>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <div id="luot__xem">
-                            <p>View: 20</p>
+                            <p id="view"></p>
                         </div>
                         <div id="luot__like">
                             <i class="fas fa-heart"></i>
-                            <p>3</p>
+                            <p id="like"></p>
                         </div>
                         <div></div>
                         <ul>
-                            <li><b>Tác Giả</b> <span>ABC</span></li>
-                            <li><b>Nhà Xuất Bản</b> <span>XYZ</span></li>
+                            <li><b>Tác Giả: </b> <span id="tacGia"></span></li>
+                            <li><b>Nhà Xuất Bản: </b> <span id="NXB"></span></li>
 
                             <div class="share">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
@@ -390,7 +386,10 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <script src="js/index_danh_muc_san_pham.js"></script>
+    <script src="js/get_detail_item.js"></script>
+    <script src="js/routing.js"></script>
     <script src="js/main.js"></script>
+
 
 
 </body>
