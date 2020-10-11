@@ -1736,7 +1736,7 @@ ol {
     /* margin-left: 20px; */
     margin-top: 19px;
     border-radius: 10px;
-    background-color: #6AB963;
+    background-color: #7fad39;
 }
 
 .product__details__text .product__details__price #phan__tram p {
@@ -3530,4 +3530,8 @@ ol {
     .blog__details__hero__text h2 {
         font-size: 24px;
     }
+}
+
+#addCart {
+    border: 0;
 }

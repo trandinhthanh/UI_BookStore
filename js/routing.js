@@ -1,12 +1,20 @@
 (function($) {
     $(window).on("hashchange", function() {
         var dsLinkDanhMuc = localStorage.getItem("dsLinkDanhMuc");
-        var path = window.location.hash;
-        var linkDanhMuc = path.slice(1, path.indexOf("/"));
-        if (dsLinkDanhMuc.indexOf(linkDanhMuc) >= 0) {
+        var hash = window.location.hash;
+        var part = null;
+        if (hash.indexOf("/") >= 0) {
+            part = hash.slice(1, hash.indexOf("/"));
+        } else {
+            part = hash.slice(1);
+        }
+
+        if (dsLinkDanhMuc.indexOf(part) >= 0) {
             location.reload();
             window.location.replace("shop-list.html" + window.location.hash);
-        } else if (dsLinkDanhMuc.indexOf(linkDanhMuc) < 0) {
+        } else if (part == "gioHang") {
+            window.location.replace("shoping-cart.html");
+        } else if (dsLinkDanhMuc.indexOf(part) < 0) {
             location.reload();
             window.location.replace("shop-details.html" + window.location.hash);
         }

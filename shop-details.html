@@ -141,7 +141,7 @@
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="#gioHang"><i class="fa fa-shopping-bag"></i> <span id="cartNumver"></span></a></li>
                         </ul>
                         <div class="header__cart__price"></div>
                     </div>
@@ -208,6 +208,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
+                        <span id="idSanPham" hidden></span>
                         <h3 id="tenSanPham"></h3>
                         <div class="product__details__rating">
                             <i class="fa fa-star"></i>
@@ -232,11 +233,11 @@
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">
-                                    <input type="text" value="1">
+                                    <input type="text" id="soLuong" value="1">
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="primary-btn">Thêm Vào Giỏ Hàng</a>
+                        <button class="primary-btn" id="addCart">Thêm Vào Giỏ Hàng</button>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <div id="luot__xem">
                             <p id="view"></p>
@@ -389,7 +390,7 @@
     <script src="js/get_detail_item.js"></script>
     <script src="js/routing.js"></script>
     <script src="js/main.js"></script>
-
+    <script src="js/add_item_cart.js"></script>
 
 
 </body>

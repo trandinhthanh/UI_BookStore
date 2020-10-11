@@ -220,4 +220,7 @@
         $button.parent().find('input').val(newVal);
     });
 
+    var cartNumber = localStorage.getItem("cartNumber") == null ? 0 : localStorage.getItem("cartNumber");
+    $("#cartNumver").text(cartNumber);
+
 })(jQuery);

@@ -9,7 +9,7 @@
         crossDomain: true,
         contentType: false,
         success: function(data) {
-            $('#tongSoSP').text(data.length);
+            $('#idSanPham').text(data.idSanPham);
             $('#tenSanPham').text(data.tenSanPham);
             $('#moTa').text(data.moTa);
 
