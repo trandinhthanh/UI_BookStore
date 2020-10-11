@@ -14,7 +14,7 @@
             $('#moTa').text(data.moTa);
 
             if (data.giamGia > 0) {
-                var giamGia = data.gia * (data.giamGia / 100);
+                var giamGia = data.gia * ((100 - data.giamGia) / 100);
                 $('#giamGia').text(formatMoney(giamGia));
                 $('#giaGoc').text(formatMoney(data.gia));
                 $('#phanTramGiam').text(data.giamGia + "%");

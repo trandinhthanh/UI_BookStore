@@ -30,6 +30,8 @@
                         if (item.soLuong == 0) {
                             trangThai = "Hết Hàng";
                         }
+                        var giamGia = formatMoney(item.gia * ((100 - item.giamGia) / 100));
+                        var gia = formatMoney(item.gia);
                         if (item.giamGia > 0) {
                             $('#listBook').append(
                                 `<div class="col-lg-4 col-md-6 col-sm-6">
@@ -37,9 +39,9 @@
                                 <div class="product__item__pic set-bg" data-setbg="http://localhost:8080/file/img/${item.linkHinhChinh}">
                                 <div class="product__discount__percent">-${item.giamGia}%</div>
                                 </div>
-                                <div class="product__item__text">
-                                    <h6><a href='#${tenSanPham}/${item.idSanPham}'>${item.tenSanPham}</a></h6>
-                                    <h5>${item.gia}</h5>
+                                <div class="product__discount__item__text">
+                                    <h5><a href='#${tenSanPham}/${item.idSanPham}'>${item.tenSanPham}</a></h5>
+                                    <div class="product__item__price">${giamGia}<span>${gia}</span></div>
                                 </div>
                                 <div class="tinh__trang__product">
                                     <h6>${trangThai}</h6>
@@ -53,9 +55,9 @@
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="http://localhost:8080/file/img/${item.linkHinhChinh}">
                                 </div>
-                                <div class="product__item__text">
-                                    <h6><a href='#${tenSanPham}/${item.idSanPham}'>${item.tenSanPham}</a></h6>
-                                    <h5>${item.gia}</h5>
+                                <div class="product__discount__item__text">
+                                    <h5><a href='#${tenSanPham}/${item.idSanPham}'>${item.tenSanPham}</a></h5>
+                                    <div class="product__item__price">${gia}</div>
                                 </div>
                                 <div class="tinh__trang__product">
                                     <h6>${trangThai}</h6>
@@ -72,5 +74,9 @@
 
             }
         });
+    }
+
+    function formatMoney(gia) {
+        return Number((gia).toFixed(1)).toLocaleString() + "đ ";
     }
 })(jQuery);
