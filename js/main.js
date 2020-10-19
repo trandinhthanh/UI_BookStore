@@ -211,16 +211,23 @@
             var newVal = parseFloat(oldValue) + 1;
         } else {
             // Don't allow decrementing below zero
-            if (oldValue > 0) {
+            if (oldValue > 1) {
                 var newVal = parseFloat(oldValue) - 1;
             } else {
-                newVal = 0;
+                newVal = 1;
             }
         }
         $button.parent().find('input').val(newVal);
+        var id = $button.parent().find('input').attr('id')
+        var idSanPham = id.slice(id.indexOf("_") + 1, id.length);
+        try {
+            changeSoluong(Number(idSanPham));
+        } catch (err) {}
+
     });
 
-    var cartNumber = localStorage.getItem("cartNumber") == null ? 0 : localStorage.getItem("cartNumber");
-    $("#cartNumver").text(cartNumber);
+    var cartNumber = JSON.parse(localStorage.getItem("cartItems")).length;
+    localStorage.setItem('cartNumber', JSON.stringify(cartNumber));
+    $("#cartNumber").text(cartNumber);
 
 })(jQuery);

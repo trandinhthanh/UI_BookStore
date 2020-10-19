@@ -38,7 +38,5 @@
         }
     });
 
-    function formatMoney(gia) {
-        return Number((gia).toFixed(1)).toLocaleString() + "đ ";
-    }
+
 })(jQuery);

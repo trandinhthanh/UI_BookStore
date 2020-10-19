@@ -1,18 +1,31 @@
 (function($) {
     $("#addCart").click(function() {
-        var cartNumber = localStorage.getItem("cartNumber") == null ? 0 : Number(localStorage.getItem("cartNumber")) + 1;
-        $("#cartNumver").text(cartNumber);
-        localStorage.setItem('cartNumber', cartNumber);
-        addCart();
+        var cartItems = JSON.parse(localStorage.getItem("cartItems"));
+        if (cartItems == null) {
+            cartItems = [];
+        }
+        let idSanPham = $("#idSanPham").text();
+        let soLuong = Number($("#soLuong").val());
+        var listID = [];
+        $.each(cartItems, function(key, item) {
+            if (Number(item.idSanPham) == idSanPham) {
+                item.soLuong = Number(item.soLuong) + soLuong;
+            }
+            listID.push(item.idSanPham);
+
+        });
+        if (listID.indexOf(idSanPham) < 0) {
+            let obj = {
+                idSanPham: idSanPham,
+                soLuong: soLuong
+            }
+            cartItems.push(obj);
+        }
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+        $("#cartNumber").text(cartItems.length);
+        localStorage.setItem('cartNumber', cartItems.length);
     });
 
-    function addCart() {
-        let idSanPham = $("#idSanPham").text();
-        let soLuong = $("#soLuong").val();
-        let obj = {
-            idSanPham: idSanPham,
-            soLuong: soLuong
-        }
-        localStorage.setItem('cartItems', JSON.stringify(obj));
-    }
 })(jQuery);
