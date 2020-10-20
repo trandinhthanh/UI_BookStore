@@ -22,7 +22,7 @@
                 $('#giamGia').text(formatMoney(data.gia));
                 $('#phan__tram').hide();
             }
-
+            $('#soluongSanPham').text(data.soLuong);
             $('#view').text("Lượt xem: " + data.luotXem);
             $('#like').text(data.luotThich);
             $('#hinhChinh').attr("src", "http:/localhost:8080/file/img/" + data.linkHinhChinh);

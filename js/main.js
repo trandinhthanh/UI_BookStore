@@ -205,10 +205,27 @@
     proQty.prepend('<span class="dec qtybtn">-</span>');
     proQty.append('<span class="inc qtybtn">+</span>');
     proQty.on('click', '.qtybtn', function() {
+
         var $button = $(this);
         var oldValue = $button.parent().find('input').val();
+        var id = $button.parent().find('input').attr('id')
+
+        var idSanPham = id.slice(id.indexOf("_") + 1, id.length);
+        if (isNaN(idSanPham)) {
+            idSanPham = null;
+            var soLuong = $('#soluongSanPham').text();
+        } else {
+            var soLuong = $('#soluongSanPham_' + idSanPham).text();
+        }
         if ($button.hasClass('inc')) {
-            var newVal = parseFloat(oldValue) + 1;
+            if (parseFloat(soLuong) > parseFloat(oldValue)) {
+                var newVal = parseFloat(oldValue) + 1;
+            } else if (parseFloat(soLuong) <= parseFloat(oldValue)) {
+                var newVal = oldValue;
+            } else if (soLuong == 0) {
+                var newVal = 0;
+            }
+
         } else {
             // Don't allow decrementing below zero
             if (oldValue > 1) {
@@ -218,11 +235,9 @@
             }
         }
         $button.parent().find('input').val(newVal);
-        var id = $button.parent().find('input').attr('id')
-        var idSanPham = id.slice(id.indexOf("_") + 1, id.length);
-        try {
-            changeSoluong(Number(idSanPham));
-        } catch (err) {}
+        if (idSanPham != null) {
+            changeSoluong(idSanPham);
+        }
 
     });
 

@@ -21,11 +21,18 @@
                 crossDomain: true,
                 contentType: false,
                 success: function(result) {
+                    var messageCart = '';
                     var giaSanPham = 0;
                     if (result.giamGia > 0) {
                         giaSanPham = result.gia * ((100 - result.giamGia) / 100);
                     } else {
                         giaSanPham = result.gia;
+                    }
+
+                    if (item.soLuong > result.soLuong) {
+                        messageCart = 'chỉ còn ' + result.soLuong + ' sản phẩm';
+                    } else if (result.soLuong == 0) {
+                        messageCart = 'Sản phẩm hết hàng';
                     }
 
                     var tongTienSP = giaSanPham * item.soLuong;
@@ -36,6 +43,7 @@
                         <td class="shoping__cart__item">
                             <img src="http:/localhost:8080/file/img/${result.linkHinhChinh}" alt="">
                             <h5>${result.tenSanPham}</h5>
+                            <span id="soluongSanPham_${result.idSanPham}" hidden>${result.soLuong}</span>
                         </td>
                         <td class="shoping__cart__price" id="giaSanPham_${result.idSanPham}">
                             ${formatMoney(giaSanPham)}
@@ -53,6 +61,7 @@
                         <td class="shoping__cart__item__close">
                             <span class="icon_close" onclick="removeSanPham(${result.idSanPham})"></span>
                         </td>
+                        <th id="messageCart_${result.idSanPham}">${messageCart}</th>
                     </tr>`
                     );
                 },
@@ -72,20 +81,32 @@ function changeSoluong(idSanPham) {
     var tongTien = 0;
     var cartItems = JSON.parse(localStorage.getItem("cartItems"));
     var soLuong = Number($('#soLuong_' + idSanPham).val());
-    var giaSanPham = removeFormatMoney($('#giaSanPham_' + idSanPham).text());
-    var tongTienSP = giaSanPham * soLuong;
-    $('#tongTienSP_' + idSanPham).text(formatMoney(tongTienSP));
+    var soluongSanPham = $('#soluongSanPham_' + idSanPham).text();
+    if (soluongSanPham < soLuong) {
+        $.each(cartItems, function(key, item) {
+            if (Number(item.idSanPham) == idSanPham) {
+                $('#soLuong_' + idSanPham).val(item.soLuong);
+            }
+        });
+        messageCart = 'chỉ còn ' + soluongSanPham + ' sản phẩm';
+        $('#messageCart_' + idSanPham).text(messageCart);
+    } else {
+        $('#messageCart_' + idSanPham).text('');
+        var giaSanPham = removeFormatMoney($('#giaSanPham_' + idSanPham).text());
+        var tongTienSP = giaSanPham * soLuong;
+        $('#tongTienSP_' + idSanPham).text(formatMoney(tongTienSP));
 
-    $.each(cartItems, function(key, item) {
-        if (Number(item.idSanPham) == idSanPham) {
-            item.soLuong = soLuong;
-        }
-        tongTien += removeFormatMoney($('#tongTienSP_' + item.idSanPham).text());
-    });
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        $.each(cartItems, function(key, item) {
+            if (Number(item.idSanPham) == idSanPham) {
+                item.soLuong = soLuong;
+            }
+            tongTien += removeFormatMoney($('#tongTienSP_' + item.idSanPham).text());
+        });
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
-    $('#tongTien').text(formatMoney(tongTien));
-    $('#tienThanhToan').text(formatMoney(tongTien));
+        $('#tongTien').text(formatMoney(tongTien));
+        $('#tienThanhToan').text(formatMoney(tongTien));
+    }
 }
 
 function removeSanPham(idSanPham) {
