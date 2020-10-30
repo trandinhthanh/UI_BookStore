@@ -3,5 +3,18 @@ function formatMoney(gia) {
 }
 
 function removeFormatMoney(gia) {
-    return Number(gia.replace(/[^0-9.-]+/g, ""));
+    return Number(gia.replace(/[^0-9-]+/g, ""));
+}
+
+function convertJson(id) {
+    var data = $(id).serializeArray();
+    var obj = {};
+    for (var key in data) {
+        if (data[key].value == '') {
+            return null;
+        }
+        obj[data[key].name] = data[key].value;
+    }
+
+    return JSON.stringify(obj);
 }
