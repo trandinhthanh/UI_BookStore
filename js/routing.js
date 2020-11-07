@@ -14,6 +14,13 @@
             window.location.replace("shop-list.html" + window.location.hash);
         } else if (part == "gioHang") {
             window.location.replace("shoping-cart.html");
+        } else if (part == "dangXuat") {
+            localStorage.setItem('user', null);
+            window.location.replace("index.html");
+        } else if (part == "dangNhap") {
+            window.location.replace("login.html");
+        } else if (part == "dangKy") {
+            window.location.replace("login.html#dangKy");
         } else if (dsLinkDanhMuc.indexOf(part) < 0) {
             location.reload();
             window.location.replace("shop-details.html" + window.location.hash);

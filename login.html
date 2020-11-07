@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styleLogin.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -20,10 +20,10 @@
                 <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Sign in with Google+</span> </button>
             </div> -->
             <!-- <p style="text-align:center"> OR </p> -->
-            <input type="email" id="inputEmail" class="form-control" placeholder="Địa chỉ Email" required="" autofocus="">
-            <input type="password" id="inputPassword" class="form-control" placeholder="Mật khẩu" required="">
+            <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Địa chỉ Email" required autofocus="">
+            <input type="password" id="inputPassword" name="matKhau" class="form-control" placeholder="Mật khẩu" required>
 
-            <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Đăng nhập</button>
+            <button class="btn btn-success btn-block" type="button" id="btnDangnhap"><i class="fas fa-sign-in-alt"></i> Đăng nhập</button>
             <a href="#" id="forgot_pswd">Quên mật khẩu!</a>
             <hr>
             <!-- <p>Don't have an account!</p>  -->
@@ -45,15 +45,15 @@
             <input type="text" name="diaChi" id="diaChi" class="form-control" placeholder="Địa chỉ nhà" required autofocus="">
             <input type="password" name="matKhau" id="matKhau" class="form-control" placeholder="Mật khẩu" required autofocus="">
             <input type="password" id="nhapLaiMK" class="form-control" placeholder="Nhập lại mật khẩu" required autofocus="">
-
-            <button class="btn btn-primary btn-block" type="submit" id="signUpAcc"><i class="fas fa-user-plus"></i> Đăng ký</button>
+            <span id="messageCreate" class="red"></span>
+            <button class="btn btn-primary btn-block" type="button" id="signUpAcc"><i class="fas fa-user-plus"></i> Đăng ký</button>
             <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Quay lại</a>
         </form>
         <br>
 
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/function_common.js"></script>
     <script src="js/login.js"></script>
 </body>

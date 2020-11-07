@@ -14,18 +14,37 @@
                 async: false,
                 crossDomain: true,
                 success: function(data) {
-                    if (data == false) {
-                        e.preventDefault();
-                        $('#logreg-forms .form-signup').toggle();
+                    if (data == true) {
+                        location.reload();
                     }
-
                 },
                 error: function(e) {
+                    $('#messageCreate').text("Email đã được đăng ký, vui lòng chọn email khác!")
                     console.log("ERROR : ", e);
 
                 }
             });
         }
+    });
+    $("#btnDangnhap").click(function(e) {
+        var data = convertJson('.form-signin');
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "http://localhost:8080/nguoiDung/dangNhap",
+            data: data,
+            async: false,
+            crossDomain: true,
+            success: function(result) {
+                saveUser(result.id, result.email);
+                history.back();
+            },
+            error: function(e) {
+                alert("Email hoặc mật khẩu không chính xác");
+                console.log("ERROR : ", e);
+
+            }
+        });
     });
 })(jQuery);
 
@@ -48,3 +67,17 @@ $(() => {
     $('#logreg-forms #btn-signup').click(toggleSignUp);
     $('#logreg-forms #cancel_signup').click(toggleSignUp);
 })
+
+var hash = window.location.hash;
+var part = hash.slice(1, hash.indexOf("/"));
+if (part == "dangKy") {
+    toggleSignUp();
+}
+
+function saveUser(id, email) {
+    var user = {
+        idUser: id,
+        email: email
+    }
+    localStorage.setItem('user', JSON.stringify(user));
+}

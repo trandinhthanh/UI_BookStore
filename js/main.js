@@ -241,8 +241,25 @@
 
     });
 
-    var cartNumber = JSON.parse(localStorage.getItem("cartItems")).length;
-    localStorage.setItem('cartNumber', JSON.stringify(cartNumber));
-    $("#cartNumber").text(cartNumber);
+    var cartNumber = JSON.parse(localStorage.getItem("cartItems"));
+    if (cartNumber != null) {
+        localStorage.setItem('cartNumber', JSON.stringify(cartNumber));
+        $("#cartNumber").text(cartNumber);
+    } else {
+        localStorage.setItem('cartNumber', 0);
+        $("#cartNumber").text(0);
+    }
+
+    //Check account login
+    var account = JSON.parse(localStorage.getItem("user"));
+    if (account == null) {
+        $("#editUser").hide();
+        $("#dangXuat").hide();
+        $("#tenNguoiDung").text("Dang nhap");
+    } else {
+        $("#dangNhap").hide();
+        $("#dangKy").hide();
+        $("#tenNguoiDung").text(account.tenNguoiDung);
+    }
 
 })(jQuery);
