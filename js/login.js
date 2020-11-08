@@ -85,7 +85,7 @@ function saveUser(id, email, tenNguoiDung) {
     localStorage.setItem('user', JSON.stringify(user));
 }
 
-function loadItemsCart() {
+function loadItemsCart(idNguoiDung) {
     $.ajax({
         type: "GET",
         contentType: "application/json",
