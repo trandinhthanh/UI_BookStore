@@ -16,6 +16,7 @@
             window.location.replace("shoping-cart.html");
         } else if (part == "dangXuat") {
             localStorage.setItem('user', null);
+            localStorage.setItem('cartItems', null);
             window.location.replace("index.html");
         } else if (part == "dangNhap") {
             window.location.replace("login.html");

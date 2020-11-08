@@ -687,9 +687,9 @@ END OF IMPORTANT
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td align="left" class="esd-block-text">
-                                                                                        <h1 style="font-family: arial, 'helvetica neue', helvetica, sans-serif;"><span style="font-size:25px;">Cảm ơn quý khách Nguyễn Minh Thiên đã đặt hàng tại BookStore</span>,</h1>
-                                                                                        <p style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">BookStore rất vui thông báo đơn hàng #838605962 của quý khách đã được tiếp nhận và đang trong quá trình xử lý. BookStore sẽ thông báo đến quý khách ngay khi hàng chuẩn
-                                                                                            bị được giao.</p>
+                                                                                        <h1 style="font-family: arial, 'helvetica neue', helvetica, sans-serif;"><span style="font-size:25px;">Cảm ơn quý khách <span th:text="${tenKhachHang}"></span> đã đặt hàng tại BookStore</span>,</h1>
+                                                                                        <p style="font-family: arial, 'helvetica neue', helvetica, sans-serif;">BookStore rất vui thông báo đơn hàng <span th:text="${idGiaoDich}"></span> của quý khách đã được tiếp nhận và đang trong quá trình xử lý. BookStore sẽ thông báo đến
+                                                                                            quý khách ngay khi hàng chuẩn bị được giao.</p>
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
@@ -752,7 +752,8 @@ END OF IMPORTANT
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td align="left" class="esd-block-text">
-                                                                                        <p style="font-size: 16px;">Nguyễn Minh Thiên<br><a href="mailto:minhthiennguyen1997@gmail.com" target="_blank" style="font-size: 16px;">minhthien@gmail.com</a><br>03488xxxxx</p>
+                                                                                        <p style="font-size: 16px;" th:text="${tenKhachHang}"><br>
+                                                                                            <a target="_blank" style="font-size: 16px;" th:text="${email}"></a><br><span th:text="${soDienThoai}"></span></p>
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
@@ -770,7 +771,7 @@ END OF IMPORTANT
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td align="left" class="esd-block-text">
-                                                                                        <p style="font-size: 16px;">Nguyễn Minh Thiên<br>03488xxxxx<br>12 Nguyễn Văn Bảo, Phường 4, Quận Gò Vấp, Thành phố Hồ Chí Minh<br>Ghi chú:&nbsp;</p>
+                                                                                        <p style="font-size: 16px;" th:text="${tenKhachHang}"><br><span th:text="${soDienThoai}"></span><br><span th:text="${diaChiGiaoHang}"></span><br>Ghi chú:&nbsp; <span th:text="${ghiChu}"></span></p>
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
@@ -793,7 +794,7 @@ END OF IMPORTANT
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td align="right" class="esd-block-text es-m-txt-c" esd-links-color="#ffffff">
-                                                                                        <h2 style="color: #ffffff;"><strong><a target="_blank" style="color: #ffffff;">#2345678</a></strong></h2>
+                                                                                        <h2 style="color: #ffffff;"><strong><a target="_blank" style="color: #ffffff;" th:text="${idGiaoDich}"></a></strong></h2>
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
@@ -1050,7 +1051,7 @@ END OF IMPORTANT
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td align="right" class="esd-block-text es-m-txt-c" esd-links-color="#ffffff">
-                                                                                        <h2 style="color: #ffffff;"><strong><a target="_blank" style="color: #ffffff;">$544.99</a></strong></h2>
+                                                                                        <h2 style="color: #ffffff;"><strong><a target="_blank" style="color: #ffffff;" th:text="#{soTien}"></a></strong></h2>
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
