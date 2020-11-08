@@ -25,7 +25,6 @@
 
 <body>
 
-
     <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
@@ -42,24 +41,24 @@
         <div class="humberger__menu__widget">
             <!-- <div class="header__top__right__language">
                 <img src="img/language.png" alt="">
-                <div>English</div>
+                <div>Việt Nam</div>
                 <span class="arrow_carrot-down"></span>
                 <ul>
-                    <li><a href="#">Spanis</a></li>
                     <li><a href="#">English</a></li>
+                    <li><a href="#">Việt Nam</a></li>
                 </ul>
             </div> -->
             <div class="header__top__right__auth">
                 <nav class="header__menu text-left">
                     <ul>
-                        <li><a href="#"><i class="fa fa-user"></i><span id="tenNguoiDung"> </span></a>
+                        <!-- <li><a href="#"><i class="fa fa-user"></i><span id="tenNguoiDung"> </span></a>
                             <ul class="header__menu__dropdown" style="width: 150px;">
                                 <li><a href="#dangNhap" id="dangNhap">Đăng nhập</a></li>
                                 <li><a href="#dangKy" id="dangKy">Đăng ký</a></li>
                                 <li><a href="#editUser" id="editUser">Sửa thông tin</a></li>
                                 <li><a href="#dangXuat" id="dangXuat">Đăng xuất</a></li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
             </div>
@@ -115,20 +114,26 @@
                             </div> -->
                             <div class="header__top__right__language">
                                 <img src="img/language.png" alt="">
-                                <div>English</div>
+                                <div>Việt Nam</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
-                                    <li><a href="#">Spanis</a></li>
                                     <li><a href="#">English</a></li>
+                                    <li><a href="#">Việt Nam</a></li>
                                 </ul>
                             </div>
-                            <div class="header__top__right__auth dang__ki">
-                                <a href="#"><i class="fa fa-user"></i> Đăng ký</a>
-
-                            </div>
-                            <div class="header__top__right__auth dang__nhap">
-                                <a href="./login.html"> <i style='font-size:15px' class='fas'>&#xf52b;</i> Đăng nhập</a>
-
+                            <div class="header__top__right__auth">
+                                <nav class="header__menu text-left">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-user"></i><span id="tenNguoiDung"> </span></a>
+                                            <ul class="header__menu__dropdown" style="width: 150px;">
+                                                <li><a href="#dangNhap" id="dangNhap">Đăng nhập</a></li>
+                                                <li><a href="#dangKy" id="dangKy">Đăng ký</a></li>
+                                                <li><a href="#editUser" id="editUser">Sửa thông tin</a></li>
+                                                <li><a href="#dangXuat" id="dangXuat">Đăng xuất</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
                     </div>
@@ -155,7 +160,7 @@
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li> -->
-                            <li><a href="./shop-details.html">Chi Tiết SP</a></li>
+                            <!-- <li><a href="./shop-details.html">Chi Tiết SP</a></li> -->
                         </ul>
                     </nav>
                 </div>
@@ -262,25 +267,14 @@
             </div>
             <div class="row" id="totalAmt">
                 <div class="col-lg-6">
-                    <div class="shoping__continue">
-                        <div class="shoping__discount">
-                            <h5>Mã giảm giá</h5>
-                            <form action="#">
-                                <input type="text" placeholder="Nhập mã giảm giá của bạn.">
-                                <button type="submit" class="site-btn">Áp dụng COUPON</button>
-                            </form>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="shoping__checkout">
                         <h5>Tổng tiền giỏ hàng</h5>
                         <ul>
-                            <li>Tổng tiền:<span id="tongTien"></span></li>
-                            <li>Giảm giá:<span>0 đ</span></li>
-                            <li>Tổng tiền thanh toán:<span id="tienThanhToan"></span></li>
+                            <li>Tổng tiền thanh toán:<span id="tongTien"></span></li>
                         </ul>
-                        <a href="#" class="primary-btn">Thanh Toán</a>
+                        <a href="#thanhToan" class="primary-btn">Thanh Toán</a>
                     </div>
                 </div>
             </div>

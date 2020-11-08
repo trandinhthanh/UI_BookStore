@@ -36,7 +36,8 @@
             async: false,
             crossDomain: true,
             success: function(result) {
-                saveUser(result.id, result.email);
+                saveUser(result.idNguoiDung, result.email, result.tenNguoiDung);
+                loadItemsCart(result.idNguoiDung)
                 history.back();
             },
             error: function(e) {
@@ -69,15 +70,55 @@ $(() => {
 })
 
 var hash = window.location.hash;
-var part = hash.slice(1, hash.indexOf("/"));
+var part = hash.slice(1);
 if (part == "dangKy") {
-    toggleSignUp();
+    $('#logreg-forms .form-signin').hide();
+    $('#logreg-forms .form-signup').show();
 }
 
-function saveUser(id, email) {
+function saveUser(id, email, tenNguoiDung) {
     var user = {
-        idUser: id,
-        email: email
+        idNguoiDung: id,
+        email: email,
+        tenNguoiDung: tenNguoiDung
     }
     localStorage.setItem('user', JSON.stringify(user));
 }
+
+function loadItemsCart() {
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: "http://localhost:8080/donHang/getDonHangByIdNguoiDung/" + idNguoiDung,
+        async: false,
+        crossDomain: true,
+        success: function(data) {
+
+            var cartItems = [];
+            var listIdSP = [];
+            var cartItemsLocal = JSON.parse(localStorage.getItem("cartItems"));
+
+            $.each(data, function(key, item) {
+                let obj = {
+                    idNguoiGiaoDich: item.idNguoiGiaoDich,
+                    idSanPham: item.idSanPham,
+                    soLuong: item.soLuong
+                }
+                listIdSP.push(item.idSanPham);
+                cartItems.push(obj);
+            });
+
+            $.each(cartItemsLocal, function(key, item) {
+                if (listIdSP.indexOf(item.idSanPham) < 0) {
+                    cartItems.push(item);
+                }
+            });
+
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        },
+        error: function(e) {
+            console.log("ERROR : ", e);
+
+        }
+    });
+};

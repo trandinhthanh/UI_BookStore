@@ -1,10 +1,11 @@
 (function($) {
     $("#addCart").click(function() {
         var cartItems = JSON.parse(localStorage.getItem("cartItems"));
+        var account = JSON.parse(localStorage.getItem("user"));
         if (cartItems == null) {
             cartItems = [];
         }
-        let idSanPham = $("#idSanPham").text();
+        let idSanPham = Number($("#idSanPham").text());
         let soLuong = Number($("#soLuong").val());
         const soluongSanPham = Number($('#soluongSanPham').text());
         if (soLuong <= soluongSanPham) {
@@ -13,6 +14,9 @@
                 if (Number(item.idSanPham) == idSanPham) {
                     if ((Number(item.soLuong) + soLuong) <= soluongSanPham) {
                         item.soLuong = Number(item.soLuong) + soLuong;
+                        if (account != null) {
+                            updateItemCartAPI(JSON.stringify(item));
+                        }
                     } else {
                         showMessage();
                     }
@@ -21,10 +25,16 @@
 
             });
             if (listID.indexOf(idSanPham) < 0) {
+
                 let obj = {
+                    idNguoiGiaoDich: account.idNguoiDung,
                     idSanPham: idSanPham,
                     soLuong: soLuong
                 }
+                if (account != null) {
+                    addItemCartAPI(JSON.stringify(obj));
+                }
+
                 cartItems.push(obj);
             }
 
@@ -45,3 +55,35 @@
     }
 
 })(jQuery);
+
+function addItemCartAPI(data) {
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "http://localhost:8080/donHang/create",
+        data: data,
+        async: false,
+        crossDomain: true,
+        success: function(data) {},
+        error: function(e) {
+            console.log("ERROR : ", e);
+
+        }
+    });
+};
+
+function updateItemCartAPI(data) {
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "http://localhost:8080/donHang/update",
+        data: data,
+        async: false,
+        crossDomain: true,
+        success: function(data) {},
+        error: function(e) {
+            console.log("ERROR : ", e);
+
+        }
+    });
+};

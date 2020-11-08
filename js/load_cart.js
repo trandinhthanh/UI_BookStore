@@ -72,7 +72,6 @@
             });
         });
         $('#tongTien').text(formatMoney(tongTien));
-        $('#tienThanhToan').text(formatMoney(tongTien));
     }
 
 })(jQuery);
@@ -80,6 +79,7 @@
 function changeSoluong(idSanPham) {
     var tongTien = 0;
     var cartItems = JSON.parse(localStorage.getItem("cartItems"));
+    var account = JSON.parse(localStorage.getItem("user"));
     var soLuong = Number($('#soLuong_' + idSanPham).val());
     var soluongSanPham = $('#soluongSanPham_' + idSanPham).text();
     if (soluongSanPham < soLuong) {
@@ -99,23 +99,55 @@ function changeSoluong(idSanPham) {
         $.each(cartItems, function(key, item) {
             if (Number(item.idSanPham) == idSanPham) {
                 item.soLuong = soLuong;
+                if (account != null) {
+                    updateItemCartAPI(JSON.stringify(item));
+                }
             }
             tongTien += removeFormatMoney($('#tongTienSP_' + item.idSanPham).text());
         });
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
         $('#tongTien').text(formatMoney(tongTien));
-        $('#tienThanhToan').text(formatMoney(tongTien));
     }
 }
 
 function removeSanPham(idSanPham) {
     var cartItems = JSON.parse(localStorage.getItem("cartItems"));
-    cartItems = cartItems.filter((item) => item.idSanPham != idSanPham);
-    $('#row_' + idSanPham).remove();
-    if (cartItems.length == 0) {
-        location.reload();
-    }
-    localStorage.setItem('cartNumber', cartItems.length);
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    var doHang = cartItems.filter((item) => item.idSanPham == idSanPham);
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "http://localhost:8080/donHang/delete",
+        data: JSON.stringify(doHang[0]),
+        crossDomain: true,
+        success: function(data) {
+            cartItems = cartItems.filter((item) => item.idSanPham != idSanPham);
+            $('#row_' + idSanPham).remove();
+            if (cartItems.length == 0) {
+                location.reload();
+            }
+            localStorage.setItem('cartNumber', cartItems.length);
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        },
+        error: function(e) {
+            console.log("ERROR : ", e);
+
+        }
+    });
+
 }
+
+function updateItemCartAPI(data) {
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "http://localhost:8080/donHang/update",
+        data: data,
+        crossDomain: true,
+        success: function(data) {},
+        error: function(e) {
+            console.log("ERROR : ", e);
+
+        }
+    });
+};

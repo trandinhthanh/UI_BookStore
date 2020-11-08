@@ -21,6 +21,13 @@
             window.location.replace("login.html");
         } else if (part == "dangKy") {
             window.location.replace("login.html#dangKy");
+        } else if (part == "thanhToan") {
+            var user = JSON.parse(localStorage.getItem("user"));
+            if (user != null) {
+                window.location.replace("checkout.html");
+            } else {
+                window.location.replace("login.html");
+            }
         } else if (dsLinkDanhMuc.indexOf(part) < 0) {
             location.reload();
             window.location.replace("shop-details.html" + window.location.hash);
