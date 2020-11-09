@@ -10,11 +10,7 @@ function convertJson(id) {
     var data = $(id).serializeArray();
     var obj = {};
     for (var key in data) {
-        if (data[key].value == '') {
-            return null;
-        }
         obj[data[key].name] = data[key].value;
     }
-
     return JSON.stringify(obj);
 }

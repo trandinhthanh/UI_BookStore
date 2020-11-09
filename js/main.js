@@ -241,9 +241,9 @@
 
     });
 
-    var cartNumber = JSON.parse(localStorage.getItem("cartNumber"));
-    if (cartNumber != null) {
-        $("#cartNumber").text(cartNumber);
+    var cartItems = JSON.parse(localStorage.getItem("cartItems"));
+    if (cartItems != null) {
+        $("#cartNumber").text(cartItems.length);
     } else {
         localStorage.setItem('cartNumber', 0);
         $("#cartNumber").text(0);

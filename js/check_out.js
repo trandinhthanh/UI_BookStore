@@ -48,7 +48,11 @@
                 data: JSON.stringify(data),
                 crossDomain: true,
                 success: function(data) {
-                    alert("Đặt hàng thành công!")
+                    if (confirm("Đặt hàng thành công!")) {
+                        localStorage.setItem('cartNumber', null);
+                        localStorage.setItem('cartItems', null);
+                        window.location.replace("index.html");
+                    }
                 },
                 error: function(e) {
                     alert("Đặt hàng không thành công!")

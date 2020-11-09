@@ -15,7 +15,9 @@
                 crossDomain: true,
                 success: function(data) {
                     if (data == true) {
-                        location.reload();
+                        if (confirm("Tạo tài khoản thành công!")) {
+                            location.reload();
+                        }
                     }
                 },
                 error: function(e) {
@@ -47,6 +49,9 @@
             }
         });
     });
+    $("#btnBack").click(function(e) {
+        history.back();
+    })
 })(jQuery);
 
 function toggleResetPswd(e) {
@@ -89,7 +94,7 @@ function loadItemsCart(idNguoiDung) {
     $.ajax({
         type: "GET",
         contentType: "application/json",
-        url: "http://localhost:8080/donHang/getDonHangByIdNguoiDung/" + idNguoiDung,
+        url: "http://localhost:8080/donHang/getDonHangByIdNguoiDung/" + Number(idNguoiDung),
         async: false,
         crossDomain: true,
         success: function(data) {
