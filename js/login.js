@@ -16,7 +16,7 @@
                 success: function(data) {
                     if (data == true) {
                         alert("Tạo tài khoản thành công!")
-                        location.reload();
+                        window.location.replace("login.html");
                     }
                 },
                 error: function(e) {
