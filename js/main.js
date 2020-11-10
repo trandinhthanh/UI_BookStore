@@ -254,10 +254,12 @@
     if (account == null) {
         $("#editUser").hide();
         $("#dangXuat").hide();
+        $("#linkNguoidung").attr("href", "login.html");
         $("#tenNguoiDung").text("Dang nhap");
     } else {
         $("#dangNhap").hide();
         $("#dangKy").hide();
+        $("#linkNguoidung").attr("href", "editUser.html");
         $("#tenNguoiDung").text(account.tenNguoiDung);
     }
 

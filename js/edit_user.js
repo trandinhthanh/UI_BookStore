@@ -37,9 +37,8 @@
                 crossDomain: true,
                 success: function(data) {
                     if (data == true) {
-                        if (confirm("Sửa thông tin thành công!")) {
-                            window.location.replace("index.html");
-                        }
+                        alert("Sửa thông tin thành công!")
+                        window.location.replace("index.html");
                     }
                 },
                 error: function(e) {

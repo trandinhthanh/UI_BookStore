@@ -31,6 +31,7 @@
                     `<img data-imgbigurl="http:/localhost:8080/file/img/${item}" src="http://localhost:8080/file/img/${item}" alt="">`
                 );
             });
+            getSanPhamLienQuan(data.idDanhMucSP, idSanPham);
         },
         error: function(e) {
             console.log("ERROR : ", e);
@@ -40,3 +41,38 @@
 
 
 })(jQuery);
+
+function getSanPhamLienQuan(idDanhMucSP, idSanPham) {
+    $.ajax({
+        type: "GET",
+        enctype: 'multipart/form-data',
+        url: "http://localhost:8080/sanPham/listSanPhamLienQuan/" + idDanhMucSP,
+        async: false,
+        crossDomain: true,
+        contentType: false,
+        success: function(data) {
+            $.each(data, function(key, item) {
+                if (item.idSanPham != idSanPham) {
+                    var gia = formatMoney(item.gia);
+                    $('#sanPhamLienQuan').append(
+                        `<div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="http://localhost:8080/file/img/${item.linkHinhChinh}">
+                        </div>
+                        <div class="product__item__text">
+                            <h6><a href='#${item.tenSanPham}/${item.idSanPham}'>${item.tenSanPham}</a></h6>
+                            <h5>${gia}</h5>
+                        </div>
+                    </div>
+                </div>`
+                    );
+                }
+            });
+
+        },
+        error: function(e) {
+            console.log("ERROR : ", e);
+
+        }
+    });
+}

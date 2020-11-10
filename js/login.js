@@ -5,7 +5,7 @@
             $('#nhapLaiMK').focus();
             return;
         }
-        if (data != null) {
+        if (data != null && $('.form-signup')[0].checkValidity()) {
             $.ajax({
                 type: "POST",
                 contentType: "application/json",
@@ -15,9 +15,8 @@
                 crossDomain: true,
                 success: function(data) {
                     if (data == true) {
-                        if (confirm("Tạo tài khoản thành công!")) {
-                            location.reload();
-                        }
+                        alert("Tạo tài khoản thành công!")
+                        location.reload();
                     }
                 },
                 error: function(e) {
@@ -26,9 +25,16 @@
 
                 }
             });
+        } else {
+            alert("Email sai định dạng vui lòng kiểm tra lại!");
+            return;
         }
     });
     $("#btnDangnhap").click(function(e) {
+        if (!$('.form-signin')[0].checkValidity()) {
+            alert("Email hoặc mật khẩu sai vui lòng kiểm tra lại!");
+            return false;
+        }
         var data = convertJson('.form-signin');
         $.ajax({
             type: "POST",
