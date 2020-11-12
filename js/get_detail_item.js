@@ -39,6 +39,17 @@
         }
     });
 
+    $.ajax({
+        type: "GET",
+        enctype: 'multipart/form-data',
+        url: "http://localhost:8080/sanPham/updateLuotXemByIdSanPham/" + idSanPham,
+        crossDomain: true,
+        contentType: false,
+        success: function() {},
+        error: function(e) {
+            console.log("ERROR : ", e);
+        }
+    });
 
 })(jQuery);
 
