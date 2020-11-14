@@ -121,12 +121,30 @@ function loadItemsCart(idNguoiDung) {
 
             $.each(cartItemsLocal, function(key, item) {
                 if (listIdSP.indexOf(item.idSanPham) < 0) {
+                    item.idNguoiGiaoDich = idNguoiDung;
                     cartItems.push(item);
+                    addItemCartAPI(JSON.stringify(item));
                 }
             });
 
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
         },
+        error: function(e) {
+            console.log("ERROR : ", e);
+
+        }
+    });
+};
+
+function addItemCartAPI(data) {
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "http://localhost:8080/donHang/create",
+        data: data,
+        async: false,
+        crossDomain: true,
+        success: function(data) {},
         error: function(e) {
             console.log("ERROR : ", e);
 

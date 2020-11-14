@@ -113,28 +113,43 @@ function changeSoluong(idSanPham) {
 
 function removeSanPham(idSanPham) {
     var cartItems = JSON.parse(localStorage.getItem("cartItems"));
+    var account = JSON.parse(localStorage.getItem("user"));
     var doHang = cartItems.filter((item) => item.idSanPham == idSanPham);
-    $.ajax({
-        type: "POST",
-        contentType: "application/json",
-        url: "http://localhost:8080/donHang/delete",
-        data: JSON.stringify(doHang[0]),
-        crossDomain: true,
-        success: function(data) {
-            cartItems = cartItems.filter((item) => item.idSanPham != idSanPham);
-            $('#row_' + idSanPham).remove();
-            if (cartItems.length == 0) {
-                location.reload();
-            }
-            localStorage.setItem('cartNumber', cartItems.length);
-            localStorage.setItem('cartItems', JSON.stringify(cartItems));
-        },
-        error: function(e) {
-            console.log("ERROR : ", e);
+    if (account != null) {
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "http://localhost:8080/donHang/delete",
+            data: JSON.stringify(doHang[0]),
+            crossDomain: true,
+            success: function(data) {
+                removeItem(cartItems, idSanPham);
+            },
+            error: function(e) {
+                console.log("ERROR : ", e);
 
-        }
+            }
+        });
+    } else {
+        removeItem(cartItems, idSanPham);
+    }
+}
+
+function removeItem(cartItems, idSanPham) {
+    var tongTien = 0;
+    cartItems = cartItems.filter((item) => item.idSanPham != idSanPham);
+    $('#row_' + idSanPham).remove();
+    if (cartItems.length == 0) {
+        location.reload();
+    }
+
+    $.each(cartItems, function(key, item) {
+        tongTien += removeFormatMoney($('#tongTienSP_' + item.idSanPham).text());
     });
 
+    $('#tongTien').text(formatMoney(tongTien));
+    localStorage.setItem('cartNumber', cartItems.length);
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
 }
 
 function updateItemCartAPI(data) {

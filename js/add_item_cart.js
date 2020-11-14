@@ -14,6 +14,7 @@
                 if (Number(item.idSanPham) == idSanPham) {
                     if ((Number(item.soLuong) + soLuong) <= soluongSanPham) {
                         item.soLuong = Number(item.soLuong) + soLuong;
+                        alert("Cập nhập số lượng sản phẩm trong giỏ hàng thành công!");
                         if (account != null) {
                             updateItemCartAPI(JSON.stringify(item));
                         }
@@ -40,8 +41,8 @@
                     }
                     addItemCartAPI(JSON.stringify(obj));
                 }
-
                 cartItems.push(obj);
+                alert("Thêm sản phẩm vào giỏ hàng thành công!");
             }
 
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
