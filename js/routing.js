@@ -32,6 +32,8 @@
             } else {
                 window.location.replace("login.html");
             }
+        } else if (part == "search") {
+            location.reload();
         } else if (dsLinkDanhMuc.indexOf(part) < 0) {
             location.reload();
             window.location.replace("shop-details.html" + window.location.hash);

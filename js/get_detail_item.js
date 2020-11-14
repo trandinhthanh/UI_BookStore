@@ -1,6 +1,19 @@
 (function($) {
     var path = window.location.hash;
     var idSanPham = path.slice(path.indexOf("/") + 1, path.length);
+
+    $.ajax({
+        type: "GET",
+        enctype: 'multipart/form-data',
+        url: "http://localhost:8080/sanPham/updateLuotXemByIdSanPham/" + idSanPham,
+        crossDomain: true,
+        contentType: false,
+        success: function() {},
+        error: function(e) {
+            console.log("ERROR : ", e);
+        }
+    });
+
     $.ajax({
         type: "GET",
         enctype: 'multipart/form-data',
@@ -36,18 +49,6 @@
         error: function(e) {
             console.log("ERROR : ", e);
 
-        }
-    });
-
-    $.ajax({
-        type: "GET",
-        enctype: 'multipart/form-data',
-        url: "http://localhost:8080/sanPham/updateLuotXemByIdSanPham/" + idSanPham,
-        crossDomain: true,
-        contentType: false,
-        success: function() {},
-        error: function(e) {
-            console.log("ERROR : ", e);
         }
     });
 
