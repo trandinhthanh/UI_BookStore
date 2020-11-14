@@ -25,13 +25,19 @@
 
             });
             if (listID.indexOf(idSanPham) < 0) {
-
-                let obj = {
-                    idNguoiGiaoDich: account.idNguoiDung,
-                    idSanPham: idSanPham,
-                    soLuong: soLuong
-                }
-                if (account != null) {
+                var obj = {};
+                if (account == null) {
+                    obj = {
+                        idNguoiGiaoDich: null,
+                        idSanPham: idSanPham,
+                        soLuong: soLuong
+                    }
+                } else if (account != null) {
+                    obj = {
+                        idNguoiGiaoDich: account.idNguoiDung,
+                        idSanPham: idSanPham,
+                        soLuong: soLuong
+                    }
                     addItemCartAPI(JSON.stringify(obj));
                 }
 
