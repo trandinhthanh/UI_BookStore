@@ -3,6 +3,7 @@
         var data = convertJson('.form-signup');
         if ($('#matKhau').val() != $('#nhapLaiMK').val()) {
             $('#nhapLaiMK').focus();
+            alert("Mật khẩu và xác nhận mật khẩu không trùng khớp!");
             return;
         }
         if (data != null && $('.form-signup')[0].checkValidity()) {

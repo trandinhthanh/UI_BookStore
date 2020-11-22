@@ -67,7 +67,9 @@ function themSanPham(data) {
     $.each(data, function(key, item) {
         var tenSanPham = item.tenSanPham.replaceAll(" ", "_");
         var trangThai = "Còn Hàng";
+        var status = "status--process";
         if (item.soLuong == 0) {
+            status = "status--denied";
             trangThai = "Hết Hàng";
         }
         if (item.giamGia > 0) {
@@ -81,7 +83,7 @@ function themSanPham(data) {
                                 <h6><a href='#${tenSanPham}/${item.idSanPham}'>${item.tenSanPham}</a></h6>
                                 <h5>${item.gia}</h5>
                             </div>
-                            <div class="tinh__trang__product">
+                            <div class="${status}">
                                 <h6>${trangThai}</h6>
                             </div>
                         </div>
@@ -97,7 +99,7 @@ function themSanPham(data) {
                                 <h6><a href='#${tenSanPham}/${item.idSanPham}'>${item.tenSanPham}</a></h6>
                                 <h5>${item.gia}</h5>
                             </div>
-                            <div class="tinh__trang__product">
+                            <div class="${status}">
                                 <h6>${trangThai}</h6>
                             </div>
                         </div>

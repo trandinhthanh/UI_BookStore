@@ -3,7 +3,7 @@
     var numberPage = path.slice(path.indexOf("/") + 1, path.length);
     var linkDanhMuc = path.slice(1, path.indexOf("/"));
     var listSanPham = null;
-    var listSPOld = null;
+    let listSPOld = [];
     if (linkDanhMuc != '' && numberPage != '') {
         $.ajax({
             type: "GET",
@@ -14,7 +14,7 @@
             contentType: false,
             success: function(result) {
                 listSanPham = result.sanPhamOutputs;
-                listSPOld = result.sanPhamOutputs;
+                listSPOld = listSanPham;
                 $('#tongSoSP').text(listSanPham.length);
                 if (listSanPham.length == 0) {
                     $('#listBook').empty();
@@ -45,7 +45,7 @@
         } else if ($("#sortSanPham").val() == "2") {
             data = sortByGia(listSanPham, "tang_dan");
         } else {
-            data = listSPOld;
+            data = sortByNewSP(listSPOld);
         }
         loadSanPham(data);
         $('.set-bg').each(function() {
@@ -60,7 +60,9 @@ function loadSanPham(data) {
     $.each(data, function(key, item) {
         var tenSanPham = item.tenSanPham.replaceAll(" ", "_");
         var trangThai = "Còn Hàng";
+        var status = "status--process";
         if (item.soLuong == 0) {
+            status = "status--denied";
             trangThai = "Hết Hàng";
         }
         var giamGia = formatMoney(item.gia * ((100 - item.giamGia) / 100));
@@ -76,7 +78,7 @@ function loadSanPham(data) {
                     <h5><a href='#${tenSanPham}/${item.idSanPham}'>${item.tenSanPham}</a></h5>
                     <div class="product__item__price">${giamGia}<span>${gia}</span></div>
                 </div>
-                <div class="tinh__trang__product">
+                <div class="${status}">
                     <h6>${trangThai}</h6>
                 </div>
             </div>
@@ -92,7 +94,7 @@ function loadSanPham(data) {
                     <h5><a href='#${tenSanPham}/${item.idSanPham}'>${item.tenSanPham}</a></h5>
                     <div class="product__item__price">${gia}</div>
                 </div>
-                <div class="tinh__trang__product">
+                <div class="${status}">
                     <h6>${trangThai}</h6>
                 </div>
             </div>
@@ -115,6 +117,18 @@ function sortByGia(data, type) {
             if (giamGiaA < giamGiaB) return 1;
             return 0;
         }
+    });
+    return data;
+}
+
+function sortByNewSP(data) {
+    data.sort(function(a, b) {
+        var ngayTaoA = new Date(a.ngayTao);
+        var ngayTaoB = new Date(b.ngayTao);
+
+        if (ngayTaoA > ngayTaoB) return -1;
+        if (ngayTaoA < ngayTaoB) return 1;
+        return 0;
     });
     return data;
 }

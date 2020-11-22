@@ -1600,7 +1600,7 @@ ol {
     font-weight: 700;
 }
 
-.tinh__trang__product {
+.status--process {
     width: 40%;
     height: 20px;
     margin: auto;
@@ -1611,8 +1611,23 @@ ol {
     /* padding-top: 13px; */
 }
 
-.tinh__trang__product h6 {
+.status--process h6 {
     color: #128f06;
+}
+
+.status--denied {
+    width: 40%;
+    height: 20px;
+    margin: auto;
+    background-color: #ecb283;
+    border-radius: 10px;
+    margin-top: 15px;
+    text-align: center;
+    /* padding-top: 13px; */
+}
+
+.status--denied h6 {
+    color: #910000;
 }
 
 .product__pagination,
