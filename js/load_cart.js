@@ -28,11 +28,10 @@
                     } else {
                         giaSanPham = result.gia;
                     }
-
-                    if (item.soLuong > result.soLuong) {
-                        messageCart = 'chỉ còn ' + result.soLuong + ' sản phẩm';
-                    } else if (result.soLuong == 0) {
+                    if (result.soLuong == 0) {
                         messageCart = 'Sản phẩm hết hàng';
+                    } else if (item.soLuong > result.soLuong) {
+                        messageCart = 'chỉ còn ' + result.soLuong + ' sản phẩm';
                     }
 
                     var tongTienSP = giaSanPham * item.soLuong;
