@@ -4,7 +4,7 @@
     $.ajax({
         type: "GET",
         enctype: 'multipart/form-data',
-        url: "http://localhost:8080/danhMucSP/listDanhMucSanPham",
+        url: "http://localhost:8080/danhMucSP/getDanhMucSPHoatDong",
         crossDomain: true,
         contentType: false,
         success: function(data) {

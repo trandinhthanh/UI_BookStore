@@ -14,3 +14,8 @@ function convertJson(id) {
     }
     return JSON.stringify(obj);
 }
+
+function formatDate(date) {
+    var d = new Date(date);
+    return d.toLocaleDateString("vi-VN");
+}

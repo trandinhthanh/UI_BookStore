@@ -32,6 +32,10 @@
         crossDomain: true,
         contentType: false,
         success: function(data) {
+            if (data == null) {
+                $('#siderGiamGia').remove();
+                return;
+            }
             $.each(data, function(key, item) {
                 var giamGia = formatMoney(item.gia * ((100 - item.giamGia) / 100));
                 var gia = formatMoney(item.gia);
@@ -49,7 +53,6 @@
                     </div>`
                 );
             });
-
         },
         error: function(e) {
             console.log("ERROR : ", e);

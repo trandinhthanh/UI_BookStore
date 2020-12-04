@@ -252,15 +252,20 @@
     //Check account login
     var account = JSON.parse(localStorage.getItem("user"));
     if (account == null) {
-        $("#editUser").hide();
-        $("#dangXuat").hide();
         $("#linkNguoidung").attr("href", "login.html");
         $("#tenNguoiDung").text("Dang nhap");
+        $("#listThaoTac").append(`
+            <li><a href="#dangNhap" id="dangNhap">Đăng nhập</a></li>
+            <li><a href="#dangKy" id="dangKy">Đăng ký</a></li>
+        `);
     } else {
-        $("#dangNhap").hide();
-        $("#dangKy").hide();
         $("#linkNguoidung").attr("href", "editUser.html");
         $("#tenNguoiDung").text(account.tenNguoiDung);
+        $("#listThaoTac").append(`
+            <li><a href="don-hang.html">Xem đơn hàng</a></li>
+            <li><a href="#editUser" id="editUser">Sửa thông tin</a></li>
+            <li><a href="#dangXuat" id="dangXuat">Đăng xuất</a></li>
+        `);
     }
 
 })(jQuery);
