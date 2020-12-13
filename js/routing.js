@@ -28,7 +28,7 @@
         } else if (part == "thanhToan") {
             var user = JSON.parse(localStorage.getItem("user"));
             if (user != null) {
-                window.location.replace("checkout.html");
+                checkTonKho(user.idNguoiDung)
             } else {
                 window.location.replace("login.html");
             }
@@ -40,3 +40,24 @@
         }
     });
 })(jQuery);
+
+function checkTonKho(idNguoiDung) {
+    $.ajax({
+        type: "GET",
+        contentType: "application/json",
+        url: "http://localhost:8080/transaction/checkTonKho/" + idNguoiDung,
+        async: false,
+        crossDomain: true,
+        success: function(data) {
+            if (data == true) {
+                window.location.replace("checkout.html");
+            } else {
+                alert("Hiện tại có 1 số sản phẩm không còn đủ hàng để bán, bạn vui lòng kiểm tra lại số lượng sản phẩm trong giỏ hàng của bạn.")
+                window.location.replace("shoping-cart.html");
+            }
+        },
+        error: function(e) {
+            console.log("ERROR : ", e);
+        }
+    });
+}

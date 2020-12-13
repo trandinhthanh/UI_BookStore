@@ -53,6 +53,7 @@
                                     <input type="text" value="${item.soLuong}" onchange="changeSoluong(${result.idSanPham})" id="soLuong_${result.idSanPham}">
                                 </div>
                             </div>
+                            <h5 style="color: red;display: inline;" id="messageCart_${result.idSanPham}">${messageCart}</h5>
                         </td>
                         <td class="shoping__cart__total" id="tongTienSP_${result.idSanPham}">
                             ${formatMoney(tongTienSP)}
@@ -60,7 +61,6 @@
                         <td class="shoping__cart__item__close">
                             <span class="icon_close" onclick="removeSanPham(${result.idSanPham})"></span>
                         </td>
-                        <th id="messageCart_${result.idSanPham}">${messageCart}</th>
                     </tr>`
                     );
                 },
@@ -83,8 +83,24 @@ function changeSoluong(idSanPham) {
     var soluongSanPham = $('#soluongSanPham_' + idSanPham).text();
     if (soluongSanPham < soLuong) {
         $.each(cartItems, function(key, item) {
-            if (Number(item.idSanPham) == idSanPham) {
+            if (Number(item.idSanPham) == idSanPham && item.soLuong <= soLuong) {
                 $('#soLuong_' + idSanPham).val(item.soLuong);
+            } else if (Number(item.idSanPham) == idSanPham && item.soLuong > soLuong) {
+                var giaSanPham = removeFormatMoney($('#giaSanPham_' + idSanPham).text());
+                var tongTienSP = giaSanPham * soLuong;
+                $('#tongTienSP_' + idSanPham).text(formatMoney(tongTienSP));
+                $.each(cartItems, function(key, item) {
+                    if (Number(item.idSanPham) == idSanPham) {
+                        item.soLuong = soLuong;
+                        if (account != null) {
+                            updateItemCartAPI(JSON.stringify(item));
+                        }
+                    }
+                    tongTien += removeFormatMoney($('#tongTienSP_' + item.idSanPham).text());
+                });
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+                $('#tongTien').text(formatMoney(tongTien));
             }
         });
         messageCart = 'chỉ còn ' + soluongSanPham + ' sản phẩm';
