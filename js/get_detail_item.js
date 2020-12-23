@@ -25,6 +25,8 @@
             $('#idSanPham').text(data.idSanPham);
             $('#tenSanPham').text(data.tenSanPham);
             $('#moTa').text(data.moTa);
+            $('#tacGia').text(data.tacGia);
+            $('#NXB').text(data.nhaXuatBan);
 
             if (data.giamGia > 0) {
                 var giamGia = data.gia * ((100 - data.giamGia) / 100);
