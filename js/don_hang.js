@@ -61,8 +61,10 @@
                         </td>
                         <td class="shoping__cart__item__cancel">
                             <span class="fa fa-ban" ${hiddenChangeStatus} id="btnHuy_${item.idGiaoDich}" onclick="huyDonHang(${item.idGiaoDich})" title="Hủy đơn hàng"></span>
-                        </td>
+                        </td>   
                     </tr>`
+
+
                     );
                 });
             },
