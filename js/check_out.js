@@ -26,6 +26,16 @@
 
             }
         });
+        var statusThanhToan = window.location.search
+        if (statusThanhToan == "?paypalOK") {
+            $("#payment").attr('checked', false);
+            $("#paypal").attr('checked', true);
+            callThanhToanPaypay(account);
+        } else if (statusThanhToan == "?paypalCancel") {
+            $("#payment").attr('checked', false);
+            $("#paypal").attr('checked', true);
+            alert("Thanh Toán bị hủy");
+        }
     }
 
     $("#btnThanhToan").click(function() {
@@ -132,4 +142,36 @@ function callPaypal(tongTien) {
         }
     };
     request.send(formData);
+}
+
+function callThanhToanPaypay(account) {
+    var dataInput = {
+        idKhachHang: account.idNguoiDung,
+        tenKhachHang: account.tenNguoiDung,
+        soDienThoai: $("#sdt").val(),
+        diaChiGiaoHang: $("#diaChi").val(),
+        email: $("#email").val(),
+        soTien: removeFormatMoney($("#tongTien").text()),
+        ghiChu: $("#ghiChu").val(),
+    }
+
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "http://localhost:8080/transaction/create",
+        data: JSON.stringify(dataInput),
+        crossDomain: true,
+        success: function(data) {
+            localStorage.setItem('cartNumber', null);
+            localStorage.setItem('cartItems', null);
+            alert("Đặt hàng thành công!")
+            window.location.replace("index.html");
+
+        },
+        error: function(e) {
+            alert("Đặt hàng không thành công!")
+            console.log("ERROR : ", e);
+
+        }
+    });
 }
