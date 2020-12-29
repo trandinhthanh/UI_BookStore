@@ -40,7 +40,8 @@
             $('#soluongSanPham').text(data.soLuong);
             $('#view').text("Lượt xem: " + data.luotXem);
             $('#like').text(data.luotThich);
-            $('#hinhChinh').attr("src", "http:/localhost:8080/file/img/" + data.linkHinhChinh);
+            $('#hinhChinh').append(`<img class="product__details__pic__item--large" data-imgbigurl="http:/localhost:8080/file/img/${data.linkHinhChinh}" src="http://localhost:8080/file/img/${data.linkHinhChinh}" alt="">`);
+            // $('#hinhChinh').append("src", "http:/localhost:8080/file/img/" + data.linkHinhChinh);
             $.each(data.danhSachLinkHinh, function(key, item) {
                 $('#listImg').append(
                     `<img data-imgbigurl="http:/localhost:8080/file/img/${item}" src="http://localhost:8080/file/img/${item}" alt="">`

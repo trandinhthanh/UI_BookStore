@@ -5,9 +5,12 @@
             type: "GET",
             enctype: 'multipart/form-data',
             url: "http://localhost:8080/transaction/getChiTiet/" + account.idNguoiDung,
+            async: false,
             crossDomain: true,
             contentType: false,
             success: function(data) {
+                $("#ghiChu").val(localStorage.getItem("noteOrder"));
+                localStorage.setItem('noteOrder', '');
                 $("#hoVaTen").val(data.tenNguoiDung);
                 $("#sdt").val(data.soDienThoai);
                 $("#email").val(data.email);
@@ -39,6 +42,7 @@
     }
 
     $("#btnThanhToan").click(function() {
+
         var account = JSON.parse(localStorage.getItem("user"));
         if (account != null) {
             var payment = $('#payment').is(":checked");
@@ -48,6 +52,7 @@
             } else if (payment) {
                 thanhToanPayment(account);
             } else {
+                localStorage.setItem('noteOrder', $("#ghiChu").val());
                 thanhToanPaypal(account, removeFormatMoney($('#tongTien').text()));
             }
 
