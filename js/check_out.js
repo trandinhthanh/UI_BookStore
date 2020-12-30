@@ -5,6 +5,7 @@
             type: "GET",
             enctype: 'multipart/form-data',
             url: "http://localhost:8080/transaction/getChiTiet/" + account.idNguoiDung,
+            async: false,
             crossDomain: true,
             contentType: false,
             success: function(data) {
