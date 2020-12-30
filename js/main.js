@@ -192,9 +192,17 @@
         var imgurl = $(this).data('imgbigurl');
         var bigImg = $('.product__details__pic__item--large').attr('src');
         if (imgurl != bigImg) {
+            // $('.product__details__pic__item--large').attr({
+            //     'data-imgbigurl': imgurl,
+            //     src: imgurl
+            // });
+
             $('.product__details__pic__item--large').attr({
-                src: imgurl
-            });
+                src: function(index, imgurl) {
+                    return imgurl;
+                },
+                'data-imgbigurl': imgurl
+            })
         }
     });
 

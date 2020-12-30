@@ -1,5 +1,5 @@
 function formatMoney(gia) {
-    return Number((gia).toFixed(1)).toLocaleString() + " đ ";
+    return Number((gia).toFixed(1)).toLocaleString() + "đ ";
 }
 
 function removeFormatMoney(gia) {

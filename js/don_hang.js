@@ -42,19 +42,27 @@
                         trangThai = "Giao không thành công";
                         statusClass = "status--denied";
                     }
+                    var listSP = '';
+                    $.each(item.sanPhamThanhTiens, function(key, sanPham) {
+                        listSP += sanPham.tenSanPham + "<br>";
+                    });
+
                     $('#listDongHang').append(
                         `<tr>
                         <td>
                             ${item.idGiaoDich}
                         </td>
                         <td >
-                            ${item.diaChiGiaoHang}
-                        </td>
-                        <td>
-                            ${formatMoney(item.soTien)}
+                            ${item.diaChi}
                         </td>
                         <td >
-                            ${formatDate(item.ngayTao)}
+                            ${listSP}
+                        </td>
+                        <td>
+                            ${formatMoney(item.tongCong)}
+                        </td>
+                        <td >
+                            ${formatDate(item.ngayMua)}
                         </td>
                         <td>
                             <span class="${statusClass}" id="status_${item.idGiaoDich}">${trangThai}</span>
