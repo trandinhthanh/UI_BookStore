@@ -19,10 +19,13 @@
                 statusClass = "status--process";
                 hiddenChangeStatus = "";
             } else if (item.trangThai == 1) {
+                $('#choXacNhan').addClass("active");
                 $('#dangGiao').addClass("active");
                 trangThai = "Đang giao hàng";
                 statusClass = "status--process";
             } else if (item.trangThai == 2) {
+                $('#choXacNhan').addClass("active");
+                $('#dangGiao').addClass("active");
                 $('#daGiao').addClass("active");
                 trangThai = "Đã giao hàng";
                 statusClass = "status--process";
