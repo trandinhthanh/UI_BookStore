@@ -65,7 +65,7 @@
                             ${formatDate(item.ngayMua)}
                         </td>
                         <td>
-                            <span class="${statusClass}" id="status_${item.idGiaoDich}">${trangThai}</span>
+                            <a href="#donHang/${item.idGiaoDich}" class="${statusClass}" id="status_${item.idGiaoDich}">${trangThai}</a>
                         </td>
                         <td class="shoping__cart__item__cancel">
                             <span class="fa fa-ban" ${hiddenChangeStatus} id="btnHuy_${item.idGiaoDich}" onclick="huyDonHang(${item.idGiaoDich})" title="Hủy đơn hàng"></span>

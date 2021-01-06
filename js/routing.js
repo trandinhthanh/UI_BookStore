@@ -34,6 +34,8 @@
             }
         } else if (part == "search") {
             location.reload();
+        } else if (part == "donHang") {
+            window.location.replace("don-hang-detail.html" + window.location.hash);
         } else if (dsLinkDanhMuc.indexOf(part) < 0) {
             location.reload();
             window.location.replace("shop-details.html" + window.location.hash);

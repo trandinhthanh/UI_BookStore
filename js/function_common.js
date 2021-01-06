@@ -1,8 +1,14 @@
 function formatMoney(gia) {
+    if (gia == null) {
+        return 0;
+    }
     return Number((gia).toFixed(1)).toLocaleString() + "đ ";
 }
 
 function removeFormatMoney(gia) {
+    if (gia == null) {
+        return 0;
+    }
     return Number(gia.replace(/[^0-9-]+/g, ""));
 }
 
