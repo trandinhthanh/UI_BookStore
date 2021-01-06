@@ -43,6 +43,11 @@
                 listSP += sanPham.tenSanPham + "<br>";
             });
 
+            var loaiThanhToan = '';
+            if (item.loaiThanhToan != null) {
+                loaiThanhToan = '- đã thanh toán qua ' + item.loaiThanhToan;
+            }
+
             $('#listDongHang').append(
                 `<tr>
                         <td>
@@ -61,7 +66,7 @@
                             ${formatDate(item.ngayMua)}
                         </td>
                         <td>
-                            <span class="${statusClass}" id="status_${item.idGiaoDich}">${trangThai}</span>
+                            <span class="${statusClass}" id="status_${item.idGiaoDich}">${trangThai} ${loaiThanhToan}</span>
                         </td>
                         <td class="shoping__cart__item__cancel">
                             <span class="fa fa-ban" ${hiddenChangeStatus} id="btnHuy_${item.idGiaoDich}" onclick="huyDonHang(${item.idGiaoDich})" title="Hủy đơn hàng"></span>

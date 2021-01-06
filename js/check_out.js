@@ -158,6 +158,7 @@ function callThanhToanPaypay(account) {
         email: $("#email").val(),
         soTien: removeFormatMoney($("#tongTien").text()),
         ghiChu: $("#ghiChu").val(),
+        loaiThanhToan: "PayPal"
     }
 
     $.ajax({
